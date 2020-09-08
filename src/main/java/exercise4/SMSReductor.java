@@ -20,6 +20,7 @@ public class SMSReductor {
                 stringBuilder.append(firstLetter);
                 stringBuilder.append(word.substring(1));
             }
+            System.out.println("Amount of messages: " + amountOfSMS(stringBuilder.toString()));
             System.out.println("Result: " + stringBuilder.toString());
         }
     }
@@ -35,6 +36,10 @@ public class SMSReductor {
             stringBuilder.append(word.substring(1));
         }
         return stringBuilder.toString();
+    }
+
+    public int amountOfSMS(String input) {
+        return input.length()/160+1;
     }
 
     public String smsReductionWithStream(String input) {
