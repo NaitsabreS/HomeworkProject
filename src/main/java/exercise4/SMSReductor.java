@@ -1,5 +1,7 @@
 package exercise4;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class SMSReductor {
@@ -39,12 +41,11 @@ public class SMSReductor {
         if (input.isEmpty()) {
             return "";
         }
-        String[] inputArray = input.trim().split(" ");
-        for (String word : inputArray) {
-            String firstLetter = word.trim().substring(0, 1).toUpperCase();
-            stringBuilder.append(firstLetter);
+        List<String> inputList = Arrays.asList(input.trim().split(" "));
+        inputList.stream().forEach(word->{
+            stringBuilder.append(word.trim().substring(0, 1).toUpperCase());
             stringBuilder.append(word.substring(1));
-        }
+        });
         return stringBuilder.toString();
     }
 
