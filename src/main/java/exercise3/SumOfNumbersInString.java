@@ -9,5 +9,4 @@ public class SumOfNumbersInString {
         System.out.println(listOfStrings);
         return listOfStrings.stream().filter(s -> !s.isEmpty()).mapToInt(Integer::parseInt).sum();
     }
-
 }
