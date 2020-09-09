@@ -29,4 +29,32 @@ class SumOfNumbersInStringTest {
 //then
         Assertions.assertEquals(0, result1);
     }
+    @Test
+    void shouldSumStringWithoutNegative() {
+//given
+        String input1 = "abcsd-123 s-a43 d12 a8 sy-10z";
+//when
+        int result1 = sumOfNumbersInString.sumOfNumbers(input1);
+//then
+        Assertions.assertEquals(-70, result1);
+    }
+
+    @Test
+    void shouldSumStringWithoutNegative2() {
+//given
+        String input1 = "ab12cx-3se--6-5d";
+//when
+        int result1 = sumOfNumbersInString.sumOfNumbers(input1);
+//then
+        Assertions.assertEquals(10, result1);
+    }
+    @Test
+    void shouldSumEmptyString() {
+//given
+        String input1 = "";
+//when
+        int result1 = sumOfNumbersInString.sumOfNumbers(input1);
+//then
+        Assertions.assertEquals(0, result1);
+    }
 }

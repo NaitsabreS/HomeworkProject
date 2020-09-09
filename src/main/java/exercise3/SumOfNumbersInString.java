@@ -1,13 +1,25 @@
 package exercise3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SumOfNumbersInString {
     public int sumOfNumbers(String input) {
-        List<String> listOfStrings = Arrays.asList(input.trim().toLowerCase().split("[^0-9]+"));
+        Pattern pattern = Pattern.compile("[\\-]*[0-9]+");
+        Matcher matcher = pattern.matcher(input);
+        List<String> listOfStrings = new ArrayList<>();
+        while (matcher.find())
+        {
+            listOfStrings.add(matcher.group(0));
+        }
         System.out.println(listOfStrings);
-        return listOfStrings.stream().filter(s -> !s.isEmpty()).mapToInt(Integer::parseInt).sum();
+        List<String> resultList = new ArrayList<>();
+        listOfStrings.forEach(word -> resultList.add(word.replaceAll("--", "")));
+        return resultList.stream().mapToInt(Integer::parseInt).sum();
     }
 
 }
