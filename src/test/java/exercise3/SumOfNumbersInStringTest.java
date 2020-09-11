@@ -57,4 +57,13 @@ class SumOfNumbersInStringTest {
 //then
         Assertions.assertEquals(0, result1);
     }
+    @Test
+    void shouldSumStringWithoutNegative3() {
+//given
+        String input1 = "ab12cx-3se---6-5d";
+//when
+        int result1 = sumOfNumbersInString.sumOfNumbers(input1);
+//then
+        Assertions.assertEquals(-2, result1);
+    }
 }
