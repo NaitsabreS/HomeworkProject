@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,12 +33,11 @@ public class BracketChecker {
     public boolean bracketChecker(List<Bracket> listOfBrackets) {
         while (!listOfBrackets.isEmpty()) {
             boolean returnValue = false;
-            int helpingResult = listOfBrackets.size() % 2;
-            if (helpingResult != 0) {
+            if (listOfBrackets.size() % 2 != 0) {
                 return false;
             }
             String temp = listOfBrackets.get(0).getValue();
-            int endIndex=listOfBrackets.size()-1;
+            int endIndex = listOfBrackets.size() - 1;
             if (temp.equals("[")) {
                 for (int i = 1; i < listOfBrackets.size(); i++) {
                     if (listOfBrackets.get(i).getValue().equals("]")) {
@@ -45,9 +45,6 @@ public class BracketChecker {
                         returnValue = true;
                         break;
                     }
-                }
-                if (!returnValue) {
-                    return false;
                 }
             } else if (temp.equals("{")) {
                 for (int i = 1; i < listOfBrackets.size(); i++) {
@@ -57,9 +54,6 @@ public class BracketChecker {
                         break;
                     }
                 }
-                if (!returnValue) {
-                    return false;
-                }
             } else if (temp.equals("(")) {
                 for (int i = 1; i < listOfBrackets.size(); i++) {
                     if (listOfBrackets.get(i).getValue().equals(")")) {
@@ -68,13 +62,21 @@ public class BracketChecker {
                         break;
                     }
                 }
-                if (!returnValue) {
-                    return false;
-                }
             } else {
                 return false;
             }
-            return bracketChecker(listOfBrackets.subList(1, endIndex));
+            if (!returnValue) {
+                return false;
+            }
+            List<Bracket> tempList = List.copyOf(listOfBrackets);
+            if (endIndex > 1) {
+                tempList=tempList.subList(1, endIndex);
+            }
+            listOfBrackets.remove(0);
+
+            listOfBrackets.remove(endIndex);
+            bracketChecker(tempList);
+
         }
         return true;
     }

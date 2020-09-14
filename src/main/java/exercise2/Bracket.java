@@ -9,4 +9,10 @@ public class Bracket {
     private String value;
     private int position;
 
+    @Override
+    public String toString() {
+        return "Bracket{" +
+                "value='" + value + '\'' +
+                '}';
+    }
 }

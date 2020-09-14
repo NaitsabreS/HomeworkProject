@@ -1,0 +1,42 @@
+package exercise2;
+
+import java.util.List;
+
+public class AlternativeBracketChecker {
+    public boolean alternativeChecker(List<Bracket> listOfBrackets) {
+        int temp = 0;
+        while (!listOfBrackets.isEmpty()) {
+            boolean check = false;
+            for (int i = 0; i < listOfBrackets.size() - 1; i++) {
+                if (listOfBrackets.get(i).getValue().equals("[")) {
+                    if (listOfBrackets.get(i + 1).getValue().equals("]")) {
+                        check = true;
+                        temp = i;
+                        break;
+                    }
+                } else if (listOfBrackets.get(i).getValue().equals("{")) {
+                    if (listOfBrackets.get(i + 1).getValue().equals("}")) {
+                        check = true;
+                        temp = i;
+                        break;
+                    }
+                } else if (listOfBrackets.get(i).getValue().equals("(")) {
+                    if (listOfBrackets.get(i + 1).getValue().equals(")")) {
+                        check = true;
+                        temp = i;
+                        break;
+                    }
+                }
+            }
+            if (check) {
+                listOfBrackets.remove(listOfBrackets.get(temp));
+                listOfBrackets.remove(listOfBrackets.get(temp));
+                alternativeChecker(listOfBrackets);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
