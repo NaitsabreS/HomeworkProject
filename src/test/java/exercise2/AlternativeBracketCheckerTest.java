@@ -119,7 +119,26 @@ class AlternativeBracketCheckerTest {
         Assertions.assertTrue(result);
     }
 
-
+    @Test
+    void shouldFormatBrackets() throws IOException {
+        //given
+        String filePath = "src/test/resources/fileWithClassCode";
+        String input=bracketChecker.buildString(filePath);
+        //when
+        String output=alternativeBracketChecker.bracketFormatter(input);
+        //then
+        //System.out.println(output);
+    }
+    @Test
+    void shouldFormatBracketsHappyPath() throws IOException {
+        //given
+        String input="[ to ( jest )\n" +
+                "]test";
+        //when
+        String output=alternativeBracketChecker.bracketFormatter(input);
+        //then
+        // TODO: 2020-09-17 nie wiem, jak to przetestować
+    }
 
 
 }
