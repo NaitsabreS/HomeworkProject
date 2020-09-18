@@ -12,6 +12,7 @@ public class AlternativeBracketChecker {
             boolean check = false;
             for (int i = 0; i < listOfBrackets.size() - 1; i++) {
                 if (listOfBrackets.get(i).getValue().equals("[")) {
+                    // Same as the other BracketChecker - extract method
                     if (listOfBrackets.get(i + 1).getValue().equals("]")) {
                         check = true;
                         temp = i;
@@ -43,7 +44,11 @@ public class AlternativeBracketChecker {
     }
 
     public String bracketFormatter(String input) {
+        // Overwriting defined variable is a smell. To ensure
+        // you're not doing this, make method parameters final
         input = input.replaceAll("\n", "");
+        // no need to make it a list, you can iterate over an array
+        // with the same syntax
         List<String> splittedInput = Arrays.asList(input.split("(?=[\\[{()}\\]])|(?<=[\\[{()}\\]])"));
 
         StringBuilder stringBuilder = new StringBuilder();

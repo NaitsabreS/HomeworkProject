@@ -23,7 +23,12 @@ class BracketCheckerTest {
     void shouldCheckStringWithoutBrackets() throws IOException {
         //given
         String filePath = "src/test/resources/fileWithoutBrackets";
+        // you could write the string in the testcase, so it's easier
+        // to understand what's being tested
         String input=bracketChecker.buildString(filePath);
+        // design smell, in this case there should be only one public method so
+        // the user knows what they can use.
+        // Without documentation no one knows in what order methods should be invoked
         List<Bracket> bracketList = bracketChecker.getListOfBracketsWithIndexes(input);
         //when
         boolean result = bracketChecker.bracketChecker(bracketList);
@@ -41,6 +46,7 @@ class BracketCheckerTest {
         //then
         Assertions.assertFalse(result);
     }
+    // failing test
     @Test
     void shouldCheckStringHappyPath() throws IOException {
         //given
@@ -63,6 +69,7 @@ class BracketCheckerTest {
         //then
         Assertions.assertFalse(result);
     }
+    // failing test
     @Test
     void shouldCheckStringFail() throws IOException {
         //given
@@ -75,6 +82,8 @@ class BracketCheckerTest {
         Assertions.assertFalse(result);
     }
     @Test
+    // Non-descriptive. If it's similar to previous use @ParametrizedTest
+    // also failing test
     void shouldCheckStringFailTest2() throws IOException {
         //given
         String filePath = "src/test/resources/fileForTest2";

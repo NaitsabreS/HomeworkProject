@@ -37,6 +37,7 @@ class SMSReductorTest {
         //when
         String result = smsReductor.smsReductionWithStream(input);
         //then
+        // what's the count?
         Assertions.assertEquals("", result);
     }
 

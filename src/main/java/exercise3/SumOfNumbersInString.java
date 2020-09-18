@@ -14,8 +14,10 @@ public class SumOfNumbersInString {
         {
             listOfStrings.add(matcher.group(0));
         }
+        // this is called 'side-effect' and we should avoid it
         System.out.println(listOfStrings);
         List<String> resultList = new ArrayList<>();
+        //clever
         listOfStrings.forEach(word -> resultList.add(word.replaceAll("--", "")));
         return resultList.stream().mapToInt(Integer::parseInt).sum();
     }

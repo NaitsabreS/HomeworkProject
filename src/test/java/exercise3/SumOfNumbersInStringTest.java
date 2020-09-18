@@ -7,7 +7,10 @@ class SumOfNumbersInStringTest {
     SumOfNumbersInString sumOfNumbersInString = new SumOfNumbersInString();
     @Test
     void shouldSumNumbers() {
+        // formatting
 //given
+        // different cases should be separated into separate test methods
+        // whereas similar cases should be tested via @ParametrizedTest
         String input1 = "abc123xyz";
         String input2 = "aa11b33";
         String input3 = "7 13";
